@@ -2,12 +2,11 @@ package bst;
 
 import java.sql.*;
 import java.util.Scanner;
-
-public class User {
-    private Connection conf;
-    private Scanner sc;
-
-    // connection from the app
+ class User {
+    Connection conf;
+    Scanner sc ;
+    
+    
     User(Connection conf, Scanner sc) {
         this.conf = conf;
         this.sc = sc;
