@@ -19,8 +19,8 @@ public class App {
         }
         try {
             Connection conf = DriverManager.getConnection(url, username, password);
-            User user = new User(conf, sc);
-            Accounts account = new Accounts(conf, sc);
+         User user = new User(conf, sc);
+           Accounts account = new Accounts(conf, sc);
             while (true) {
                 System.out.println("Welcome to Banking App");
                 System.out.println("1.register\n2.Login\n3.Exit");
