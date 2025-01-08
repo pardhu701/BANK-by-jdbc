@@ -3,7 +3,6 @@ package bst;
 import java.sql.*;
 import java.util.*;
 
-
 public class App {
     private static final String url = "jdbc:mysql://localhost:3306/banksystem";
     private static final String username = "root";
@@ -18,7 +17,8 @@ public class App {
         }
         try {
             Connection conf = DriverManager.getConnection(url, username, password);
-           //onfig config = new Config(conf);
+            // onfig config = new Config(conf);
+            Accounts accounts = new Accounts(conf, sc);
             User user = new User(conf, sc);
             while (true) {
                 System.out.println("Welcome to Banking App");
@@ -30,8 +30,9 @@ public class App {
                         user.register();
                         break;
                     case 2:
-                        user.login();   
-
+                       String[] userTOaccount =   user.login();
+                        accounts.showMenu(userTOaccount[0], userTOaccount[1]);
+                       
                     case 3:
                         System.out.println("thank you for using our app");
                         System.exit(0);

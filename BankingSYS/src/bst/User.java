@@ -62,7 +62,7 @@ import java.util.Scanner;
 
     }
 
-    public String login() {
+    public String[] login() {
         try {
             int flag = 0;
             while (true) {
@@ -77,11 +77,15 @@ import java.util.Scanner;
                 String check_email = String.format("Select * from userdetails where email='%s'", email);
                 ResultSet rs_log = stmt.executeQuery(check_email);
                 if (rs_log.next()) {
-                    String check_password = String.format("Select * from userdetails where passwd='%s'", password);
+                    String check_password = String.format("Select * from userdetails where passwd='%s' and email='%s'", password,email);
                     ResultSet rs_pass = stmt.executeQuery(check_password);
                     if (rs_pass.next()) {
                         System.out.println("login successfull");
-                        return email;
+                        String full_name=rs_pass.getString("full_name");
+                        
+                        
+                        String[] details={email,full_name};
+                        return details;
                     } else {
                         flag++;
                         // System.out.println(flag);
